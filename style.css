@@ -23,12 +23,3 @@ body {
   max-width: 1000px;
   max-height: 800px;
 }
-
-@media screen and (max-width: 600) {
-  body {
-    align-items: flex-end;
-  }
-  #game {
-    height: 50%;
-  }
-}

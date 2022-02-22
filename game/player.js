@@ -81,19 +81,19 @@ function getPlayer() {
     const leftButton = k.add([
       k.sprite("leftControl"),
       k.layer("ui"),
-      k.pos(10, game.scrollHeight < 800 ? k.height() - 90 : k.height() - 120),
+      k.pos(10, game.scrollHeight < 400 ? k.height() - 90 : k.height() - 120),
       k.fixed(),
       k.scale(0.75),
-      k.area(),
+      k.area({ width: 80, height: 80 }),
       k.opacity(0.5),
     ]);
     const rightButton = k.add([
       k.sprite("rightControl"),
       k.layer("ui"),
-      k.pos(80, game.scrollHeight < 800 ? k.height() - 90 : k.height() - 120),
+      k.pos(80, game.scrollHeight < 400 ? k.height() - 90 : k.height() - 120),
       k.fixed(),
       k.scale(0.75),
-      k.area(),
+      k.area({ width: 80, height: 80 }),
       k.opacity(0.5),
     ]);
     const jumpButton = k.add([
@@ -101,11 +101,11 @@ function getPlayer() {
       k.layer("ui"),
       k.pos(
         k.width() - 70,
-        game.scrollHeight < 800 ? k.height() - 90 : k.height() - 120
+        game.scrollHeight < 400 ? k.height() - 90 : k.height() - 120
       ),
       k.fixed(),
       k.scale(0.75),
-      k.area(),
+      k.area({ width: 80, height: 80 }),
       k.opacity(0.5),
     ]);
 
