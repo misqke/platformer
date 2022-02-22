@@ -5,16 +5,29 @@ k.scene("win", ({ time }) => {
   const seconds = time - minutes * 60;
 
   k.add([
-    k.text("You Win!", { size: 50 }),
-    k.pos(k.width() * 0.5 - 100, k.height() * 0.5 - 40),
+    k.text("You Win!", { size: game.scrollWidth >= 900 ? 50 : 30 }),
+    k.pos(
+      game.scrollWidth >= 900 ? k.width() * 0.5 - 110 : k.width() * 0.5 - 75,
+      k.height() * 0.5 - 60
+    ),
   ]);
   k.add([
-    k.text(`${minutes}:${seconds}`, { size: 25 }),
-    k.pos(k.width() * 0.5 - 30, k.height() * 0.5 + 20),
+    k.text(`${minutes}:${seconds < 10 ? "0" + seconds : seconds}`, {
+      size: game.scrollWidth >= 900 ? 30 : 20,
+    }),
+    k.pos(
+      game.scrollWidth >= 900 ? k.width() * 0.5 - 50 : k.width() * 0.5 - 18,
+      k.height() * 0.5
+    ),
   ]);
   k.add([
-    k.text("press any key to play again.", { size: 25 }),
-    k.pos(k.width() * 0.5 - 200, k.height() * 0.5 + 60),
+    k.text("press any key to play again.", {
+      size: game.scrollWidth >= 900 ? 25 : 12,
+    }),
+    k.pos(
+      game.scrollWidth >= 900 ? k.width() * 0.5 - 210 : k.width() * 0.5 - 110,
+      k.height() * 0.5 + 40
+    ),
   ]);
 
   k.onKeyPress(() => {

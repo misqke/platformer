@@ -1,9 +1,11 @@
+const game = document.querySelector("#game");
+
 const k = kaboom({
   debug: true,
-  // root: document.querySelector("#game"),
+  root: game,
   fullscreen: true,
-  inspectColor: [0, 0, 0],
-  scale: 2,
+  inspectColor: [255, 255, 255],
+  scale: game.scrollWidth < 900 ? 1.5 : 2,
   background: [0, 0, 0, 1],
 });
 

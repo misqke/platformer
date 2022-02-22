@@ -12,20 +12,20 @@ k.scene("game", ({ level, time }) => {
 
   // timer
   const timer = k.add([
-    k.text(time),
+    k.text(time, { size: 40 }),
     k.layer("ui"),
     k.pos(0, 0),
     k.fixed(),
-    "timer",
     {
       value: time,
     },
+    "timer",
   ]);
 
-  const tick = setInterval(() => {
-    timer.value++;
-    timer.text = timer.value;
-  }, 1000);
+  timer.onUpdate(() => {
+    timer.value += k.dt();
+    timer.text = Math.floor(timer.value);
+  });
 
   //add player
   const player = getPlayer();
@@ -34,7 +34,6 @@ k.scene("game", ({ level, time }) => {
   k.onUpdate(() => {
     camPos(player.pos);
     if (player.pos.y >= 400) {
-      clearInterval(tick);
       if (level !== 0) {
         go("game", { level, time: timer.value });
       } else {
@@ -55,9 +54,8 @@ k.scene("game", ({ level, time }) => {
 
   // go next level
   player.onCollide("exit", () => {
-    clearInterval(tick);
     if (level + 1 === maps.length) {
-      k.go("win", { time: timer.value });
+      k.go("win", { time: Math.floor(timer.value) });
     } else {
       k.go("game", { level: level + 1, time: timer.value });
     }
